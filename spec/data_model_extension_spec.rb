@@ -2,17 +2,14 @@ require "spec_helper"
 
 describe ActiveRecord::Base do
 
-  describe "Links to model via 'has_one / belongs_to :through' association" do
+  describe "Links to model via 'has_one :through' association" do
 
 
-    context "single type association to model" do
+    context "link to model of single type" do
 
       before :each do
-        Bucket.create()
-        Bucket.create()
-        Marble.create()
-        @m = Marble.all.first
-        @b = Bucket.all.first
+        @b = Bucket.create()
+        @m = Marble.create()
       end
 
       it "updates association" do
@@ -34,18 +31,15 @@ describe ActiveRecord::Base do
     end
 
 
-    context "polymoprhic association to model (pure STI)" do
+    context "link to STI models (polymorphic association)" do
 
       before :each do
         @u = User.create()
-        @a = Admin.create()
         @e = Expert.create()
+        @a = Admin.create()
       end
 
       it "updates association" do
-        attributes = { "id" => @u.id, "group" => @a.class.to_s + "=" + @a.id.to_s }
-        @u.update_attributes(attributes).should == true
-        @u.group.should == @a
         attributes = { "id" => @u.id, "group" => @e.class.to_s + "=" + @e.id.to_s }
         @u.update_attributes(attributes).should == true
         @u.group.should == @e
@@ -53,8 +47,9 @@ describe ActiveRecord::Base do
       end
 
       it "removes association" do
-        @u.group = @e
+        @u.group = @a
         @u.save
+        @u.group.should == @a
         @u.group = nil
         @u.save
         @u.group.should == nil
@@ -63,10 +58,29 @@ describe ActiveRecord::Base do
     end
 
 
-    context "polymorphic association to model (arbitrary types)" do
+    context "link to model of different types (polymorphic association)" do
 
-      it "updates association attribute"
-      it "removes association attribute"
+      before :each do
+        @u = User.create()
+        @b = Bucket.create()
+        @c = Certificate.create()
+      end
+
+      it "updates association" do
+        attributes = { "id" => @u.id, "certificate" => @c.class.to_s + "=" + @c.id.to_s }
+        @u.update_attributes(attributes).should == true
+        @u.certificate.should == @c
+        EntityCertificate.where(:certificate_id => @c.id, :entity_id => @u.id).count.should == 1
+      end
+
+      it "removes association" do
+        @b.certificate = @c
+        @b.save
+        @b.certificate.should == @c
+        @b.certificate = nil
+        @b.save
+        @b.certificate.should == nil
+      end
 
     end
 

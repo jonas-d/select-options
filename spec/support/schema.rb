@@ -4,7 +4,6 @@ ActiveRecord::Schema.define do
   create_table :buckets, :force => true
   create_table :marbles, :force => true
 
-  # single type association
   create_table :bucket_marbles, :force => true do |t|
     t.references :bucket
     t.references :marble
@@ -14,14 +13,16 @@ ActiveRecord::Schema.define do
   create_table :groups, :force => true
   create_table :users, :force => true
 
-  # polymorphic association (pure STI)
   create_table :group_users, :force => true do |t|
     t.references :group, :polymorphic => true
     t.references :user
   end
 
-  # (arbitrary) polymorphic association
+  create_table :certificates, :force => true
 
-
+  create_table :entity_certificates, :force => true do |t|
+    t.references :entity, :polymorphic => true
+    t.references :certificate
+  end
 
 end

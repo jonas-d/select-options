@@ -24,3 +24,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sqlite3", "1.3.8"
   spec.add_development_dependency "activerecord", "3.2.8"
 end
+
+# Description
+# a) setup has_one :through polymorphic association to STI model:
+#    has_one :association_model
+#    has_one :attr_name, :through => :association_model, :source_type => "STIBaseClass"
+# b) setup has_one :through polymorphic association to models of different types
+#    has_one :association_model, :as => :...
+#    has_one :attr_name, :through => :association_model

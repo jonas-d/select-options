@@ -1,4 +1,6 @@
 require "select_options"
+# require "rspec/rails"
+
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3", 
