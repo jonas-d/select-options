@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'select_options/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "select options for through associations"
+  spec.name          = "select-options"
   spec.version       = SelectOptions::VERSION
   spec.authors       = ["Jonas"]
-  spec.email         = ["jonas.dagefoerde@gmail.com"]
+  spec.email         = ["jonas@launchd.de"]
   spec.description   = %q{TODO: Write a gem description}
   spec.summary       = %q{TODO: Write a gem summary}
   spec.homepage      = ""
@@ -20,10 +20,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "1.3.5"
   spec.add_development_dependency "rake", "10.1.0"
-  spec.add_development_dependency "rspec", "2.14.1"
-  spec.add_development_dependency "sqlite3", "1.3.8"
   spec.add_development_dependency "activerecord", "3.2.8"
-end
+  spec.add_development_dependency "actionpack", "3.2.8"  # required for action_view
+  spec.add_development_dependency "sqlite3", "1.3.8"
+  spec.add_development_dependency "rspec", "2.14.1"
+  spec.add_development_dependency "database_cleaner", "0.9.1"
+  end
+
 
 # Description
 # a) setup has_one :through polymorphic association to STI model:

@@ -4,6 +4,9 @@ describe ActiveRecord::Base do
 
   describe "Links to model via 'has_one :through' association" do
 
+    before :all do
+      @separator = "-"
+    end
 
     context "link to model of single type" do
 
@@ -13,7 +16,7 @@ describe ActiveRecord::Base do
       end
 
       it "updates association" do
-        attributes = { "id" => @m.id, "bucket" => @b.class.to_s + "=" + @b.id.to_s }
+        attributes = { "id" => @m.id, "bucket" => @b.class.to_s + @separator + @b.id.to_s }
         @m.update_attributes(attributes).should == true
         @m.bucket.should == @b
         BucketMarble.where(:bucket_id => @b.id, :marble_id => @m.id).count.should == 1
@@ -40,7 +43,7 @@ describe ActiveRecord::Base do
       end
 
       it "updates association" do
-        attributes = { "id" => @u.id, "group" => @e.class.to_s + "=" + @e.id.to_s }
+        attributes = { "id" => @u.id, "group" => @e.class.to_s + @separator + @e.id.to_s }
         @u.update_attributes(attributes).should == true
         @u.group.should == @e
         GroupUser.where(:group_id => @e.id, :user_id => @u.id).count.should == 1
@@ -67,7 +70,7 @@ describe ActiveRecord::Base do
       end
 
       it "updates association" do
-        attributes = { "id" => @u.id, "certificate" => @c.class.to_s + "=" + @c.id.to_s }
+        attributes = { "id" => @u.id, "certificate" => @c.class.to_s + @separator + @c.id.to_s }
         @u.update_attributes(attributes).should == true
         @u.certificate.should == @c
         EntityCertificate.where(:certificate_id => @c.id, :entity_id => @u.id).count.should == 1

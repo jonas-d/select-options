@@ -35,7 +35,10 @@ class GroupUser < ActiveRecord::Base
 end
 
 
-class Certificate < ActiveRecord::Base ; end
+class Certificate < ActiveRecord::Base
+  has_one :entity_certificate
+  has_one :entity, :through => :entity_certificate
+end
 
 class EntityCertificate < ActiveRecord::Base
   belongs_to :certificate

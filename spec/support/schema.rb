@@ -1,7 +1,9 @@
 ActiveRecord::Schema.define do
   self.verbose = false
 
-  create_table :buckets, :force => true
+  create_table :buckets, :force => true do |t|
+    t.string :caption
+  end
   create_table :marbles, :force => true
 
   create_table :bucket_marbles, :force => true do |t|
@@ -11,7 +13,9 @@ ActiveRecord::Schema.define do
 
 
   create_table :groups, :force => true
-  create_table :users, :force => true
+  create_table :users, :force => true do |t|
+    t.string :name
+  end
 
   create_table :group_users, :force => true do |t|
     t.references :group, :polymorphic => true
