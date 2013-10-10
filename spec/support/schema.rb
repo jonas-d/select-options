@@ -2,7 +2,7 @@ ActiveRecord::Schema.define do
   self.verbose = false
 
   create_table :buckets, :force => true do |t|
-    t.string :caption
+    t.string :name
   end
   create_table :marbles, :force => true
 

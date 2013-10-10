@@ -25,7 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sqlite3", "1.3.8"
   spec.add_development_dependency "rspec", "2.14.1"
   spec.add_development_dependency "database_cleaner", "0.9.1"
-  end
+  spec.add_development_dependency "xml-simple"
+end
 
 
 # Description

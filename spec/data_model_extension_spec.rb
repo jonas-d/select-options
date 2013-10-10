@@ -77,12 +77,12 @@ describe ActiveRecord::Base do
       end
 
       it "removes association" do
-        @b.certificate = @c
-        @b.save
-        @b.certificate.should == @c
-        @b.certificate = nil
-        @b.save
-        @b.certificate.should == nil
+        @c.entity = @b
+        @c.save
+        @c.entity.should == @b
+        @c.entity = nil
+        @c.save
+        @c.entity.should == nil
       end
 
     end

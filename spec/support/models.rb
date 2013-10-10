@@ -37,7 +37,7 @@ end
 
 class Certificate < ActiveRecord::Base
   has_one :entity_certificate
-  has_one :entity, :through => :entity_certificate
+  has_one :entity, :through => :entity_certificate, :source_type => "ActiveRecord::Base"
 end
 
 class EntityCertificate < ActiveRecord::Base
