@@ -1,4 +1,6 @@
 require "select_options"
+require "database_cleaner"
+require "xmlsimple"
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3", 

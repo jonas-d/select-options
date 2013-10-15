@@ -1,5 +1,4 @@
 require "spec_helper"
-require "xmlsimple"
 
 include SelectOptionsHelper
 
@@ -7,7 +6,9 @@ describe SelectOptionsHelper do
 
   describe "Providing select options entries" do
 
-    it "contains all passed model instances with 'type-id' identifiers" do
+    # this test could be improved by adding a controller and view to the gem test framework
+    # (I tried and decided to do it without controller and view)
+    it "contains all model instances with identifiers of the form 'type-id'" do
       separator = "-"
       u = User.create(:name => "Ernie")
       b = Bucket.create(:name => "round bucket")
