@@ -2,6 +2,7 @@ require "select_options"
 require "database_cleaner"
 require "xmlsimple"
 
+# Create test db in memory
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3", 
   :database => ":memory:")

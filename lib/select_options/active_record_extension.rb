@@ -43,6 +43,6 @@ module SelectOptions
       }
     end
 
-  end
+  end # ActiveRecordExtension
 
-end # ActiveRecord
+end # SelectOptions

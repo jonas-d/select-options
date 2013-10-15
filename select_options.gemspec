@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = SelectOptions::VERSION
   spec.authors       = ["Jonas"]
   spec.email         = ["jonas@launchd.de"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Write a gem description}
+  spec.summary       = %q{Write a gem summary}
   spec.homepage      = "https://github.com/jonas-d/select-options"
   spec.license       = "MIT"
 
