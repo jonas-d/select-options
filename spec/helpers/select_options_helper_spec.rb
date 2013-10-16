@@ -1,8 +1,8 @@
 require "spec_helper"
 
-include SelectOptionsHelper
+include SelectOptions::Helper
 
-describe SelectOptionsHelper do
+describe SelectOptions::Helper do
 
   describe "Providing select options entries" do
 
