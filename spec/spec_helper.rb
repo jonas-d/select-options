@@ -2,7 +2,7 @@ require "select_options"
 require "database_cleaner"
 require "xmlsimple"
 
-# Create test db in memory
+# create in memory test db
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3", 
   :database => ":memory:")
@@ -30,4 +30,11 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+end
+
+
+# initialize the gem (is otherwise done by the rails app initialization process)
+ActiveSupport.on_load(:active_record) do
+  include SelectOptions::ActiveRecordExtension
+  ActiveRecord::Base.replace_update_attributes_method
 end

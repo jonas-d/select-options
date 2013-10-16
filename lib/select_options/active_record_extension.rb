@@ -59,5 +59,5 @@ module SelectOptions
 end # SelectOptions
 
 
-ActiveRecord::Base.send(:include, SelectOptions::ActiveRecordExtension)
-ActiveRecord::Base.replace_update_attributes_method
+# ActiveRecord::Base.send(:include, SelectOptions::ActiveRecordExtension)
+# ActiveRecord::Base.replace_update_attributes_method
