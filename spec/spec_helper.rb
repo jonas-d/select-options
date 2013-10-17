@@ -31,10 +31,3 @@ RSpec.configure do |config|
   end
 
 end
-
-
-# initialize the gem (is otherwise done by the rails app initialization process)
-ActiveSupport.on_load(:active_record) do
-  include SelectOptions::ActiveRecordExtension
-  ActiveRecord::Base.replace_update_attributes_method
-end

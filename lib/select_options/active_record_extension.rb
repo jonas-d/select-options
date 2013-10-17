@@ -2,9 +2,7 @@ module SelectOptions
 
   module ActiveRecordExtension
 
-    def self.included(base)
-      base.send :extend, ClassMethods
-    end
+    extend ActiveSupport::Concern
 
 
     module ClassMethods
@@ -24,7 +22,7 @@ module SelectOptions
             if single_assoc.index(key)
               if value.blank?
                 # set association to nil, i.e. remove it
-                self.send(key.to_s + seperator, nil)
+                self.send(key.to_s + "=", nil)
               else
                 assoc_obj_class = value.split(seperator)[0].camelize
                 assoc_obj_id = value.split(seperator)[1]
@@ -54,3 +52,7 @@ module SelectOptions
   end # ActiveRecordExtension
 
 end # SelectOptions
+
+
+ActiveRecord::Base.send :include, SelectOptions::ActiveRecordExtension
+ActiveRecord::Base.replace_update_attributes_method
