@@ -6,6 +6,7 @@ require "select_options/version"
 require "select_options/active_record_extension"
 require "select_options/app/helpers/select_options_helper"
 
+puts "+++++++++++++++++++ select_options.rb"
 
 module SelectOptions
 
