@@ -1,6 +1,3 @@
-# require "action_view/helpers"
-
-
 module SelectOptions
 
   module Helper

@@ -2,11 +2,8 @@ module SelectOptions
 
   module ActiveRecordExtension
 
-    extend ActiveSupport::Concern
-
     def self.included(base)
       base.send :extend, ClassMethods
-      # replace_update_attributes_method(base)
     end
 
 
@@ -57,7 +54,3 @@ module SelectOptions
   end # ActiveRecordExtension
 
 end # SelectOptions
-
-
-# ActiveRecord::Base.send(:include, SelectOptions::ActiveRecordExtension)
-# ActiveRecord::Base.replace_update_attributes_method

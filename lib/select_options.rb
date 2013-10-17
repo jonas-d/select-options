@@ -12,14 +12,16 @@ module SelectOptions
 
   class Railtie < Rails::Railtie
 
-    initializer "select_options_init" do
+    initializer "select_options.active_record_init" do
       puts "++++++++++++++++++++ init 1"
-      # include select options extension into ActiveRecord::Base class
+      # include select options extension to ActiveRecord::Base class
       ActiveSupport.on_load(:active_record) do
-        # ActiveRecord::Base.send(:include, SelectOptions::ActiveRecordExtension)
         include SelectOptions::ActiveRecordExtension
         ActiveRecord::Base.replace_update_attributes_method
       end
+    end
+
+    initializer "select_options.action_view_init" do
       puts "++++++++++++++++++++ init 2"
       # include helpers to ActionView::Base class
       ActiveSupport.on_load(:action_view) do
